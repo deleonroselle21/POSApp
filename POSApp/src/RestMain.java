@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -7,6 +8,8 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.ContainerEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,13 +26,21 @@ import javax.swing.JTable;
 public class RestMain {
 
 	private JFrame frame;
-	private JTable table;
 
 	/**
 	 * Launch the application.
 	 * @throws ClassNotFoundException 
 	 * @throws SQLException 
 	 */
+	
+	
+	private PanelLunch plunch;
+	private PanelChicken pChicken;
+	private PanelPork  pPork;
+	private PanelFish pFish;
+	private PanelDisplayOrder displayorder;
+	
+	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
 		
@@ -46,8 +57,8 @@ public class RestMain {
 		
 		
 		
-		PreparedStatement ps=conn.prepareStatement("insert into food values (4,'sdf','sdf','fhfgh');");
-		ps.executeUpdate();
+		//PreparedStatement ps=conn.prepareStatement("insert into food values (4,'sdf','sdf','fhfgh');");
+		//ps.executeUpdate();
 		
 		
 		
@@ -70,85 +81,196 @@ public class RestMain {
 		});
 	}
 
+	
+	
+	
+	
+	private class PanelButtonMouseAdapter extends MouseAdapter{
+		
+		JPanel panel;
+		
+		public PanelButtonMouseAdapter(JPanel panel) {
+			
+			this.panel=panel;
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			
+			panel.setBackground(new Color(112,128,144));
+			
+			
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			
+			panel.setBackground(new Color(47,79,79));
+			
+		}
+		
+		@Override
+		public void mousePressed(MouseEvent e) {
+			panel.setBackground(new Color(60,179,113));
+			//menuClicked(pChicken);
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			
+			panel.setBackground(new Color(112,128,144));
+			
+		}
+		
+		
+	}
+	
+	public void menuClicked(JPanel panel) {
+		
+		plunch.setVisible(false);
+		pChicken.setVisible(false);
+		pPork.setVisible(false);
+		pFish.setVisible(false);
+		
+		panel.setVisible(true);
+		
+	}
+	
+	
 	/**
 	 * Create the application.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public RestMain() {
+	public RestMain() throws ClassNotFoundException, SQLException {
 		initialize();
+		 
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	private void initialize() {
+	private void initialize() throws ClassNotFoundException, SQLException {
 		frame = new JFrame();
 		frame.getContentPane().addContainerListener(new ContainerAdapter() {
 			@Override
 			public void componentAdded(ContainerEvent e) {
 			}
 		});
-		frame.setBounds(100, 100, 973, 543);
+	   
+		frame.setBounds(100, 100, 1047, 618);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setLocationRelativeTo(null);
+		pPork=new PanelPork();
+		pPork.setLocation(0, 0);
+		pFish=new PanelFish();
+		pFish.setLocation(0, 0);
+		plunch=new PanelLunch();
+		plunch.setLocation(0, 0);
+		pChicken=new PanelChicken();
+		pChicken.setLocation(0,0);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(315, 132, 124, 65);
-		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_4 = new JButton("New button");
-		btnNewButton_4.setBounds(437, 132, 124, 65);
-		frame.getContentPane().add(btnNewButton_4);
 		
-		JButton btnNewButton_5 = new JButton("New button");
-		btnNewButton_5.setBounds(560, 132, 124, 65);
-		frame.getContentPane().add(btnNewButton_5);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(315, 194, 124, 65);
-		frame.getContentPane().add(btnNewButton_1);
+		JPanel panel = new JPanel();
+		panel.setBounds(342, 6, 682, 494);
+		frame.getContentPane().add(panel);
+		panel.setLayout(null);
 		
-		JButton btnNewButton_4_1 = new JButton("New button");
-		btnNewButton_4_1.setBounds(437, 194, 124, 65);
-		frame.getContentPane().add(btnNewButton_4_1);
+	
 		
-		JButton btnNewButton_5_1 = new JButton("New button");
-		btnNewButton_5_1.setBounds(560, 194, 124, 65);
-		frame.getContentPane().add(btnNewButton_5_1);
 		
-		JButton btnNewButton_2 = new JButton("New button");
-		btnNewButton_2.setBounds(315, 257, 124, 65);
-		frame.getContentPane().add(btnNewButton_2);
 		
-		JButton btnNewButton_4_2 = new JButton("New button");
-		btnNewButton_4_2.setBounds(437, 257, 124, 65);
-		frame.getContentPane().add(btnNewButton_4_2);
+		JPanel panelLunch = new JPanel();
+		panelLunch.addMouseListener(new PanelButtonMouseAdapter(panelLunch) {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(plunch);
+				
+			}
+			
+			
+		});
+		panelLunch.setBounds(17, 20, 155, 41);
+		panel.add(panelLunch);
 		
-		JButton btnNewButton_5_2 = new JButton("New button");
-		btnNewButton_5_2.setBounds(560, 257, 124, 65);
-		frame.getContentPane().add(btnNewButton_5_2);
+	
 		
-		JButton btnNewButton_3 = new JButton("Chicken");
-		btnNewButton_3.setBounds(315, 47, 124, 44);
-		frame.getContentPane().add(btnNewButton_3);
 		
-		JButton btnNewButton_4_3 = new JButton("Pork");
-		btnNewButton_4_3.setBounds(432, 47, 143, 44);
-		frame.getContentPane().add(btnNewButton_4_3);
 		
-		JButton btnNewButton_5_3 = new JButton("Fish");
-		btnNewButton_5_3.setBounds(574, 47, 150, 44);
-		frame.getContentPane().add(btnNewButton_5_3);
+		JLabel lblNewLabel = new JLabel("LUNCH SPECIAL");
+		panelLunch.add(lblNewLabel);
 		
-		table = new JTable();
-		table.setBounds(24, 38, 264, 415);
-		frame.getContentPane().add(table);
+		JPanel panelChicken = new JPanel();
+		panelChicken.addMouseListener(new PanelButtonMouseAdapter(panelChicken){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(pChicken);
+				
+			}
+			
+			
+		});
+		panelChicken.setBounds(180, 20, 155, 41);
+		panel.add(panelChicken);
 		
-		JLabel lblNewLabel = new JLabel("TOTAL");
-		lblNewLabel.setBounds(24, 455, 61, 16);
-		frame.getContentPane().add(lblNewLabel);
+		JLabel lblChicken = new JLabel("CHICKEN");
+		panelChicken.add(lblChicken);
 		
-		JButton btnNewButton_6 = new JButton("Proceed to Payment");
-		btnNewButton_6.setBounds(338, 391, 223, 62);
-		frame.getContentPane().add(btnNewButton_6);
+		JPanel panelPork = new JPanel();
+		panelPork.addMouseListener(new PanelButtonMouseAdapter(panelPork){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(pPork);
+				
+			}
+			
+			
+		});
+		panelPork.setBounds(347, 20, 155, 41);
+		panel.add(panelPork);
+		
+		JLabel lblPoork = new JLabel("PORK");
+		panelPork.add(lblPoork);
+		
+		JPanel panelFish = new JPanel();
+		panelFish.addMouseListener(new PanelButtonMouseAdapter(panelFish){
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				menuClicked(pFish);
+				
+			}
+			
+			
+		});
+		panelFish.setBounds(514, 20, 155, 41);
+		panel.add(panelFish);
+		
+		JLabel lblFish = new JLabel("FISH");
+		panelFish.add(lblFish);
+		
+		JPanel panelMainContent = new JPanel();
+		panelMainContent.setBounds(17, 73, 652, 397);
+		panel.add(panelMainContent);
+		panelMainContent.setLayout(null);
+		
+		panelMainContent.add(pChicken);
+		panelMainContent.add(pPork);
+		panelMainContent.add(pFish);
+		panelMainContent.add(plunch);
+		
+		
+		
+		
+		
+		menuClicked(plunch);
+		
+		JPanel DisplayOrder = new JPanel();
+		DisplayOrder.setBounds(6, 6, 328, 494);
+		frame.getContentPane().add(DisplayOrder);
+		
+		
+		
 	}
 }
