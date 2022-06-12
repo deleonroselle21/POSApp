@@ -38,6 +38,7 @@ public class RestMain {
 	private PanelChicken pChicken;
 	private PanelPork  pPork;
 	private PanelFish pFish;
+	private PanelDisplayOrder displayorder;
 	
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -135,16 +136,20 @@ public class RestMain {
 	
 	/**
 	 * Create the application.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	public RestMain() {
+	public RestMain() throws ClassNotFoundException, SQLException {
 		initialize();
 		 
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
 	 */
-	private void initialize() {
+	private void initialize() throws ClassNotFoundException, SQLException {
 		frame = new JFrame();
 		frame.getContentPane().addContainerListener(new ContainerAdapter() {
 			@Override
@@ -164,6 +169,7 @@ public class RestMain {
 		plunch.setLocation(0, 0);
 		pChicken=new PanelChicken();
 		pChicken.setLocation(0,0);
+		
 		
 		
 		
@@ -259,6 +265,10 @@ public class RestMain {
 		
 		
 		menuClicked(plunch);
+		
+		JPanel DisplayOrder = new JPanel();
+		DisplayOrder.setBounds(6, 6, 328, 494);
+		frame.getContentPane().add(DisplayOrder);
 		
 		
 		
