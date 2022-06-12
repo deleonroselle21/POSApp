@@ -29,7 +29,7 @@ public class PanelLunch extends JPanel {
 		add(panel);
 		//Connection();
 		DatabaseQuery db=new DatabaseQuery();
-		int count=db.ConnectionCount();
+		int count=db.ConnectionCount("LUNCH");
 		/*
 		JButton button2=new JButton();
 		JButton button3=new JButton();
@@ -54,7 +54,7 @@ public class PanelLunch extends JPanel {
 			
 			
 			buttons.add(new JButton());
-			name.add(db.MenuName().get(i));
+			name.add(db.MenuName("LUNCH").get(i));
 		
 		
 		
@@ -70,7 +70,7 @@ public class PanelLunch extends JPanel {
 		int initialcount=0;
 		
 		while(initialcount<count) {
-			name1=db.MenuName().get(initialcount);
+			name1=db.MenuName("LUNCH").get(initialcount);
 			
 			
 			System.out.println(name1);
