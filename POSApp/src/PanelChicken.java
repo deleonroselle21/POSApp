@@ -1,9 +1,13 @@
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -75,7 +79,11 @@ public class PanelChicken extends JPanel {
 			
 			button.setText(String.valueOf(nameCollection.get(i)));
 			panel.add(button);
-			
+			button.addActionListener(new ActionListener() {
+		         public void actionPerformed(ActionEvent e) {
+		        	   JOptionPane.showMessageDialog(panel,button.getText());
+		         }
+		      });
 			i++;
 		}
 		

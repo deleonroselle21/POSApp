@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -169,6 +170,9 @@ public class RestMain {
 		plunch.setLocation(0, 0);
 		pChicken=new PanelChicken();
 		pChicken.setLocation(0,0);
+		displayorder=new PanelDisplayOrder();
+		//displayorder.setSize(331, 494);
+		//displayorder.setLocation(0,0);
 		
 		
 		
@@ -266,9 +270,26 @@ public class RestMain {
 		
 		menuClicked(plunch);
 		
-		JPanel DisplayOrder = new JPanel();
-		DisplayOrder.setBounds(6, 6, 328, 494);
-		frame.getContentPane().add(DisplayOrder);
+		JPanel panelDisplay = new JPanel();
+		panelDisplay.setBounds(6, 6, 331, 494);
+		frame.getContentPane().add(panelDisplay);
+		//panelDisplay.setBorder(new LineBorder(Color.RED));
+		panelDisplay.setLayout(null);
+		panelDisplay.add(displayorder);
+		
+		
+		//JPanel panelDisplay = new JPanel();
+		//panelDisplay.setBounds(6, 6, 328, 494);
+		
+		//frame.getContentPane().add(panelDisplay);
+		
+		//JPanel DisplayOrder = new JPanel();
+		//DisplayOrder.setBounds(6, 6, 328, 494);
+		//frame.getContentPane().add(DisplayOrder);
+		
+		
+		
+		
 		
 		
 		
