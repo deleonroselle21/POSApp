@@ -60,7 +60,7 @@ public class PanelChicken extends JPanel {
 			name1=db.MenuName("CHICKEN").get(initialcount);
 			
 			
-			System.out.println(name1);
+			//System.out.println(name1);
 		
 			nameCollection.add(name1);
 	

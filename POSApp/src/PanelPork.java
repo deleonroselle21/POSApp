@@ -54,7 +54,7 @@ public class PanelPork extends JPanel {
 			name1=db.MenuName("PORK").get(initialcount);
 			
 			
-			System.out.println(name1);
+			//System.out.println(name1);
 		
 			nameCollection.add(name1);
 	

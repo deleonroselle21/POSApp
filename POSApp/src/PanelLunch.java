@@ -1,4 +1,5 @@
 import javax.swing.JPanel;
+import javax.swing.JTable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -8,6 +9,7 @@ import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,9 +18,12 @@ import java.util.ArrayList;
 import java.sql.*;
 
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 public class PanelLunch extends JPanel {
 	private final JPanel panel = new JPanel();
+	 PanelDisplayOrder displayorder=new PanelDisplayOrder(null);
+	 PanelPork pPork=new PanelPork();
 
 	/**
 	 * Create the panel.
@@ -31,7 +36,9 @@ public class PanelLunch extends JPanel {
 		setLayout(null);
 		panel.setBounds(0, 0, 652, 397);
 		add(panel);
+		
 		//Connection();
+		//RestMain rm=new RestMain();
 		DatabaseQuery db=new DatabaseQuery();
 		int count=db.ConnectionCount("LUNCH");
 		/*
@@ -97,9 +104,73 @@ public class PanelLunch extends JPanel {
 			button.setText(String.valueOf(nameCollection.get(i)));
 			panel.add(button);
 			
+			/*
+			
+			panelChicken.addMouseListener(new PanelButtonMouseAdapter(panelChicken){
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					menuClicked(pChicken);
+					
+					
+				}
+				
+				
+			});
+			
+			*/
+			
+			// PanelDisplayOrder displayOrder1=new PanelDisplayOrder();
+			
+			 
 			button.addActionListener(new ActionListener() {
 		         public void actionPerformed(ActionEvent e) {
-		        	   JOptionPane.showMessageDialog(panel,button.getText());
+		        	 //  JOptionPane.showMessageDialog(panel,button.getText());
+		        	
+		 			
+					String []data= new String[] { "cccrdgf", "cccsdfdf", "cccdgd"};
+					
+					
+					
+					
+					//displayorder=new PanelDisplayOrder(null);
+					
+					
+					DefaultTableModel model = (DefaultTableModel) displayorder.table.getModel();
+					model.addRow(data);
+					
+					//new String[] { "cccrdgf", "cccsdfdf", "cccdgd"}
+					//model.addRow();
+					System.out.println(model.getRowCount());
+					
+					//displayorder.setBackground(Color.RED);
+				//	displayorder.setSize(331, 494);
+					//displayorder.setSize(331, 494);
+					//displayorder.setSize(331, 494);
+					//displayorder.setSize(331, 494);
+				///	displayorder.setLocation(0,0);
+				
+				//System.out.println(dp.panel.getBounds());
+					
+					
+					try {
+						
+						
+						new RestMain().panel_1.add(new PanelDisplayOrder(data).table);
+						System.out.println(displayorder.getBounds());
+						//new RestMain().panel_1.add(pPork);
+						//new RestMain().panel_1.add(displayorder).setVisible(true);
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					//new PanelDisplayOrder(new String[]{"gfghf","ghgjh","ghfg"});
+		 			
+		        		
+		        	 
+						
+						
+						
+		        	 
 		         }
 		      });
 			

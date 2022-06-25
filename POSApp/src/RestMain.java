@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import java.awt.GridLayout;
 import javax.swing.JLabel;
@@ -23,6 +24,8 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class RestMain {
 
@@ -40,6 +43,8 @@ public class RestMain {
 	private PanelPork  pPork;
 	private PanelFish pFish;
 	private PanelDisplayOrder displayorder;
+	private JTable table;
+	public JPanel panel_1;
 	
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -55,6 +60,8 @@ public class RestMain {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		conn=DriverManager.getConnection(url,username,password);
+		
+		
 		
 		
 		
@@ -75,6 +82,7 @@ public class RestMain {
 				try {
 					RestMain window = new RestMain();
 					window.frame.setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -129,12 +137,26 @@ public class RestMain {
 		pChicken.setVisible(false);
 		pPork.setVisible(false);
 		pFish.setVisible(false);
-		
+	//	displayorder.setVisible(true);
 		panel.setVisible(true);
 		
 	}
 	
+	public void addrow(String name) {
+		DefaultTableModel model=(DefaultTableModel) table.getModel();
+		model.addColumn("Col1"); 
+		model.addColumn("Col2"); 
+
+		// Append a row 
+		model.addRow(new Object[]{name, "v2"});
+		
+		
+		DatabaseQuery db=new DatabaseQuery();
+		//db.MenuName();
+		//System.out.println(name);
 	
+		
+	}
 	/**
 	 * Create the application.
 	 * @throws SQLException 
@@ -142,6 +164,7 @@ public class RestMain {
 	 */
 	public RestMain() throws ClassNotFoundException, SQLException {
 		initialize();
+		
 		 
 	}
 
@@ -152,6 +175,7 @@ public class RestMain {
 	 */
 	private void initialize() throws ClassNotFoundException, SQLException {
 		frame = new JFrame();
+		
 		frame.getContentPane().addContainerListener(new ContainerAdapter() {
 			@Override
 			public void componentAdded(ContainerEvent e) {
@@ -170,9 +194,14 @@ public class RestMain {
 		plunch.setLocation(0, 0);
 		pChicken=new PanelChicken();
 		pChicken.setLocation(0,0);
-		displayorder=new PanelDisplayOrder();
+		
+		displayorder=new PanelDisplayOrder(null);
+		displayorder.setBackground(Color.RED);
+		displayorder.setSize(331, 494);
 		//displayorder.setSize(331, 494);
-		//displayorder.setLocation(0,0);
+		//displayorder.setSize(331, 494);
+		//displayorder.setSize(331, 494);
+		displayorder.setLocation(0,0);
 		
 		
 		
@@ -183,8 +212,8 @@ public class RestMain {
 		panel.setLayout(null);
 		
 	
-		
-		
+	
+		//displayorder.setVisible(true);
 		
 		JPanel panelLunch = new JPanel();
 		panelLunch.addMouseListener(new PanelButtonMouseAdapter(panelLunch) {
@@ -211,6 +240,7 @@ public class RestMain {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				menuClicked(pChicken);
+				
 				
 			}
 			
@@ -270,13 +300,104 @@ public class RestMain {
 		
 		menuClicked(plunch);
 		
-		JPanel panelDisplay = new JPanel();
-		panelDisplay.setBounds(6, 6, 331, 494);
-		frame.getContentPane().add(panelDisplay);
-		//panelDisplay.setBorder(new LineBorder(Color.RED));
-		panelDisplay.setLayout(null);
-		panelDisplay.add(displayorder);
+		panel_1 = new JPanel();
+		//panel_1.setBounds(0, 0, 324, 494);
+		//panel_1.setBounds(0, 0, 331, 494);
+		frame.getContentPane().add(panel_1);
 		
+		//JPanel panelDisplay = new JPanel();
+		panel_1.setBounds(0, 0, 331, 494);
+		//frame.getContentPane().add(panelDisplay);
+		panel_1.setLayout(null);
+		
+		//table = new JTable();
+		//table.setBounds(6, 6, 319, 482);
+		panel_1.add(displayorder);
+		
+		
+		
+		JButton btnNewButton = new JButton("New button");
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String []data= new String[] { "cccrdgf", "cccsdfdf", "cccdgd"};
+				
+				
+				
+				//displayorder=new PanelDisplayOrder(null);
+				
+				
+				DefaultTableModel model = (DefaultTableModel) displayorder.table.getModel();
+				model.addRow(data);
+				
+				//new String[] { "cccrdgf", "cccsdfdf", "cccdgd"}
+				//model.addRow();
+				System.out.println(model.getRowCount());
+				
+				displayorder.setBackground(Color.RED);
+				//displayorder.setSize(331, 494);
+				//displayorder.setSize(331, 494);
+				//displayorder.setSize(331, 494);
+				//displayorder.setSize(331, 494);
+				//displayorder.setLocation(0,0);
+				panel_1.add(displayorder);
+				System.out.println(displayorder.getBounds());
+				//PanelDisplayOrder dp=new PanelDisplayOrder("fgbf");
+				//panel_1.setSize(null);
+				//panel_1.setBounds(0, 0, 331, 494);
+				
+				//panel_1.add(displayorder);
+				//displayorder.setVisible(true);
+				//dp.table.setBackground(Color.red);
+				//panel_1.remove(dp.panel);
+				
+				
+				//System.out.println(dp.table.getBackground());
+			//	panel_1.add(dp);
+				
+		//		System.out.println(panel_1.getBounds());
+				//dp.pane.setVisible(false);
+				//dp.table.setVisible(false);
+				//PanelDisplayOrder dp=new PanelDisplayOrder("testing");
+				//dp.label1.setText("jghh");
+				//panel_1.add(dp);
+				//dp.setVisible(true);
+				//dp.label1.setText("DFGDF");
+				//dp.getRootPane().setVisible(true);
+				
+				
+				//dp.label1.setText("testing");
+				/*
+				Res
+				
+				PanelDisplayOrder display=new PanelDisplayOrder();
+				System.out.println(display.table.getColumnCount());
+        		DefaultTableModel model = (DefaultTableModel) display.table.getModel();
+        		 model.addRow(new String[] { "cccrdgf", "cccsdfdf", "cccdgd"});
+        		//scrollPane.setViewportView(table);
+        	
+        		//display.addRow(button.getText());
+        		 panel_1.add(display.table);
+        	 */
+				
+				
+			}
+		});
+		btnNewButton.setBounds(214, 533, 117, 29);
+		frame.getContentPane().add(btnNewButton);
+		
+		//panel_1.add(displayorder);
+		
+		//menuClicked(displayorder);
+		//displayorder.setVisible(true);
+		
+		//displayorder.setBounds(0,0,331,494);
+		
+		//new PanelDisplayOrder();
+		
+	///	panelDisplay.add(displayorder);
+		//addrow("sample");
 		
 		//JPanel panelDisplay = new JPanel();
 		//panelDisplay.setBounds(6, 6, 328, 494);
@@ -293,5 +414,5 @@ public class RestMain {
 		
 		
 		
-	}
+}
 }
