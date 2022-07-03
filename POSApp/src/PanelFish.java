@@ -1,4 +1,6 @@
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -18,6 +20,7 @@ public class PanelFish extends JPanel {
 	 * Create the panel.
 	 */
 	private final JPanel panel = new JPanel();
+	 JTable tab=PanelDisplayOrder.table;
 	public PanelFish() throws ClassNotFoundException, SQLException {
 		setBackground(Color.LIGHT_GRAY);
 		setBounds(0,0,652,397);
@@ -76,7 +79,24 @@ public class PanelFish extends JPanel {
 			
 			button.addActionListener(new ActionListener() {
 		         public void actionPerformed(ActionEvent e) {
-		        	   JOptionPane.showMessageDialog(panel,button.getText());
+		        	 try {
+							String price=String.valueOf(db.getPrice(button.getText()));
+							 String []data= new String[] { button.getText(),price, "1"};
+								
+								
+				        	 
+				        	 
+								
+								//System.out.println(tab.getBounds());
+								//System.out.println(tab.getRowCount());
+									
+									DefaultTableModel model = (DefaultTableModel) tab.getModel();
+									model.addRow(data);
+						} catch (ClassNotFoundException | SQLException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+			        	 
 		         }
 		      });
 		

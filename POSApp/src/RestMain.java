@@ -29,7 +29,7 @@ import java.awt.event.ActionEvent;
 
 public class RestMain {
 
-	private JFrame frame;
+	public JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -42,10 +42,11 @@ public class RestMain {
 	private PanelChicken pChicken;
 	private PanelPork  pPork;
 	private PanelFish pFish;
-	private PanelDisplayOrder displayorder;
+	public PanelDisplayOrder displayorder=new PanelDisplayOrder();
 	private JTable table;
-	public JPanel panel_1;
-	
+	public JPanel panel_1=new JPanel();
+	String text;
+	JButton btnNewButton;
 	
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		
@@ -69,7 +70,7 @@ public class RestMain {
 		//ps.executeUpdate();
 		
 		
-		
+	
 		
 		
 		
@@ -162,18 +163,32 @@ public class RestMain {
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	public RestMain() throws ClassNotFoundException, SQLException {
+	RestMain() throws ClassNotFoundException, SQLException {
 		initialize();
-		
+		//display("gh");
+	//	display("hdf");
 		 
 	}
-
+	public void setText(String text) {
+		
+		this.text=text;
+	}
+	
+	public String getText() {
+		
+		return text;
+		
+	}
+	
+	
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 * @throws SQLException 
 	 * @throws ClassNotFoundException 
 	 */
-	private void initialize() throws ClassNotFoundException, SQLException {
+	public void initialize() throws ClassNotFoundException, SQLException {
 		frame = new JFrame();
 		
 		frame.getContentPane().addContainerListener(new ContainerAdapter() {
@@ -182,6 +197,10 @@ public class RestMain {
 			}
 		});
 	   
+		
+		
+		
+		
 		frame.setBounds(100, 100, 1047, 618);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -194,14 +213,7 @@ public class RestMain {
 		plunch.setLocation(0, 0);
 		pChicken=new PanelChicken();
 		pChicken.setLocation(0,0);
-		
-		displayorder=new PanelDisplayOrder(null);
-		displayorder.setBackground(Color.RED);
-		displayorder.setSize(331, 494);
-		//displayorder.setSize(331, 494);
-		//displayorder.setSize(331, 494);
-		//displayorder.setSize(331, 494);
-		displayorder.setLocation(0,0);
+		 JTable table=new JTable();
 		
 		
 		
@@ -211,7 +223,7 @@ public class RestMain {
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
 		
-	
+		
 	
 		//displayorder.setVisible(true);
 		
@@ -228,7 +240,7 @@ public class RestMain {
 		panelLunch.setBounds(17, 20, 155, 41);
 		panel.add(panelLunch);
 		
-	
+		
 		
 		
 		
@@ -300,7 +312,17 @@ public class RestMain {
 		
 		menuClicked(plunch);
 		
-		panel_1 = new JPanel();
+		
+		//displayorder=new PanelDisplayOrder();
+		//displayorder.setBackground(Color.RED);
+		displayorder.setSize(331, 494);
+		//displayorder.setSize(331, 494);
+		//displayorder.setSize(331, 494);
+		//displayorder.setSize(331, 494);
+		displayorder.setLocation(0,0);
+		
+		
+		//panel_1 = new JPanel();
 		//panel_1.setBounds(0, 0, 324, 494);
 		//panel_1.setBounds(0, 0, 331, 494);
 		frame.getContentPane().add(panel_1);
@@ -310,17 +332,30 @@ public class RestMain {
 		//frame.getContentPane().add(panelDisplay);
 		panel_1.setLayout(null);
 		
+	//	displayorder.label.setText(this.getText());
+		
 		//table = new JTable();
 		//table.setBounds(6, 6, 319, 482);
 		panel_1.add(displayorder);
 		
 		
 		
-		JButton btnNewButton = new JButton("New button");
+		System.out.println(text);
+		
+		
+		
+		btnNewButton = new JButton("New button");
+		
+		 
+		
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				//table = new JTable();
+				//table.setBounds(6, 6, 319, 482);
+				//panel_1.add(displayorder);
 				String []data= new String[] { "cccrdgf", "cccsdfdf", "cccdgd"};
 				
 				
@@ -329,61 +364,27 @@ public class RestMain {
 				
 				
 				DefaultTableModel model = (DefaultTableModel) displayorder.table.getModel();
-				model.addRow(data);
+				//model.addRow(data);
+				
 				
 				//new String[] { "cccrdgf", "cccsdfdf", "cccdgd"}
 				//model.addRow();
 				System.out.println(model.getRowCount());
-				
-				displayorder.setBackground(Color.RED);
-				//displayorder.setSize(331, 494);
-				//displayorder.setSize(331, 494);
-				//displayorder.setSize(331, 494);
-				//displayorder.setSize(331, 494);
-				//displayorder.setLocation(0,0);
-				panel_1.add(displayorder);
+				try {
+					display("Sfsdf");
+				} catch (ClassNotFoundException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			
 				System.out.println(displayorder.getBounds());
-				//PanelDisplayOrder dp=new PanelDisplayOrder("fgbf");
-				//panel_1.setSize(null);
-				//panel_1.setBounds(0, 0, 331, 494);
 				
-				//panel_1.add(displayorder);
-				//displayorder.setVisible(true);
-				//dp.table.setBackground(Color.red);
-				//panel_1.remove(dp.panel);
-				
-				
-				//System.out.println(dp.table.getBackground());
-			//	panel_1.add(dp);
-				
-		//		System.out.println(panel_1.getBounds());
-				//dp.pane.setVisible(false);
-				//dp.table.setVisible(false);
-				//PanelDisplayOrder dp=new PanelDisplayOrder("testing");
-				//dp.label1.setText("jghh");
-				//panel_1.add(dp);
-				//dp.setVisible(true);
-				//dp.label1.setText("DFGDF");
-				//dp.getRootPane().setVisible(true);
-				
-				
-				//dp.label1.setText("testing");
-				/*
-				Res
-				
-				PanelDisplayOrder display=new PanelDisplayOrder();
-				System.out.println(display.table.getColumnCount());
-        		DefaultTableModel model = (DefaultTableModel) display.table.getModel();
-        		 model.addRow(new String[] { "cccrdgf", "cccsdfdf", "cccdgd"});
-        		//scrollPane.setViewportView(table);
-        	
-        		//display.addRow(button.getText());
-        		 panel_1.add(display.table);
-        	 */
 				
 				
 			}
 		});
+	
+		
 		btnNewButton.setBounds(214, 533, 117, 29);
 		frame.getContentPane().add(btnNewButton);
 		
@@ -415,4 +416,49 @@ public class RestMain {
 		
 		
 }
+	
+public void display(String label) throws ClassNotFoundException, SQLException {
+		
+		//initialize();
+		
+	//	displayorder.setSize(331, 494);
+		
+		displayorder.setLocation(0,0);
+		
+		
+		panel_1.setBounds(0, 0, 331, 494);
+		
+		panel_1.setLayout(null);
+		
+		
+		
+		displayorder.label.setText(label);
+		
+		System.out.println(label);
+		System.out.println("juj");
+		System.out.println(displayorder.table.getRowCount());
+		
+		panel_1.add(displayorder);
+		//displayorder.label.setText(label);
+		
+		System.out.println(displayorder.getBounds());
+		
+		
+		String []data= new String[] { "cccrdgf", "cccsdfdf", "cccdgd"};
+		
+		
+		
+		//displayorder=new PanelDisplayOrder(null);
+		
+		
+		DefaultTableModel model = (DefaultTableModel) displayorder.table.getModel();
+		model.addRow(data);
+		panel_1.add(displayorder);
+		displayorder.setVisible(true);
+	//	displayorder.setVisible(true);
+		//frame.getContentPane().add(panel_1);
+		
+		//initialize();
+	}
+	
 }
