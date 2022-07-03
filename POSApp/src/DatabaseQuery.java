@@ -72,5 +72,29 @@ public class DatabaseQuery {
 		
 	}
 	
+	
+	public double getPrice(String menuName) throws SQLException, ClassNotFoundException {
+		
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		conn=DriverManager.getConnection(url,username,password);
+		
+		 stmt = conn.createStatement();
+		
+		 String query="select `menu_price` from `menu` where `menu_name`=?";
+		 
+		 PreparedStatement pstmt=conn.prepareStatement(query);
+		 pstmt.setString(1, menuName);
+		 ResultSet rs = pstmt.executeQuery();
+		 rs.next();
+	    double price = rs.getDouble(1);
+	    //System.out.println(count);
+	    return price;
+		
+		
+	}
+	
+	
+	
 
 }

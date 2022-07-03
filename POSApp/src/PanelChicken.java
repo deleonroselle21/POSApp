@@ -1,9 +1,15 @@
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.ComponentOrientation;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -18,6 +24,7 @@ public class PanelChicken extends JPanel {
 	 * @throws ClassNotFoundException 
 	 */
 	private final JPanel panel = new JPanel();
+	 JTable tab=PanelDisplayOrder.table;
 	
 	public PanelChicken() throws ClassNotFoundException, SQLException {
 		
@@ -56,7 +63,7 @@ public class PanelChicken extends JPanel {
 			name1=db.MenuName("CHICKEN").get(initialcount);
 			
 			
-			System.out.println(name1);
+			//System.out.println(name1);
 		
 			nameCollection.add(name1);
 	
@@ -75,7 +82,29 @@ public class PanelChicken extends JPanel {
 			
 			button.setText(String.valueOf(nameCollection.get(i)));
 			panel.add(button);
-			
+			button.addActionListener(new ActionListener() {
+		         public void actionPerformed(ActionEvent e) {
+		        	 
+		        	 try {
+						String price=String.valueOf(db.getPrice(button.getText()));
+						 String []data= new String[] { button.getText(),price, "1"};
+							
+							
+			        	 
+			        	 
+							
+							//System.out.println(tab.getBounds());
+							//System.out.println(tab.getRowCount());
+								
+								DefaultTableModel model = (DefaultTableModel) tab.getModel();
+								model.addRow(data);
+					} catch (ClassNotFoundException | SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		        	 
+		         }
+		      });
 			i++;
 		}
 		
