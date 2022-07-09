@@ -38,6 +38,25 @@ public class DatabaseQuery {
 		
 		}
 	
+	public int countPayment() throws SQLException, ClassNotFoundException {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		conn=DriverManager.getConnection(url,username,password);
+		
+		 stmt = conn.createStatement();
+		
+		 String query="select count(*) from `Payment`";
+		 PreparedStatement pstmt=conn.prepareStatement(query);
+		
+		 ResultSet rs = pstmt.executeQuery();
+		 rs.next();
+	    int count = rs.getInt(1);
+	    //System.out.println(count);
+	    return count;
+		
+		
+	}
+	
 	public List<String> MenuName(String category) throws ClassNotFoundException, SQLException {
 		
 
@@ -71,6 +90,43 @@ public class DatabaseQuery {
 	    //return rs.toString();
 		
 	}
+	
+	
+public List<String> PaymentType() throws ClassNotFoundException, SQLException {
+		
+
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		conn=DriverManager.getConnection(url,username,password);
+		
+		 stmt = conn.createStatement();
+		 String name="";
+		List<String> pay=new ArrayList<>();
+		
+		
+		
+		 String query="select * from `Payment`";
+		 PreparedStatement pstmt=conn.prepareStatement(query);
+		
+		 
+		 
+		// ResultSet rs = stmt.executeQuery(query);
+		 ResultSet rs=pstmt.executeQuery();
+		while(rs.next()) {
+			
+			
+		pay.add(rs.getString("type"));
+		}
+		return pay;
+		
+		//System.out.println(rs.toString());
+		//return rs.toString();
+	   // int count = rs.getInt(1);
+	    //System.out.println(count);
+	    //return rs.toString();
+		
+	}
+	
+	
 	
 	
 	public double getPrice(String menuName) throws SQLException, ClassNotFoundException {
