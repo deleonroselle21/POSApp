@@ -344,70 +344,15 @@ public class RestMain {
 		
 		
 		
-		btnNewButton = new JButton("New button");
+		
 		
 		 
 		
 		
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				//table = new JTable();
-				//table.setBounds(6, 6, 319, 482);
-				//panel_1.add(displayorder);
-				String []data= new String[] { "cccrdgf", "cccsdfdf", "cccdgd"};
-				
-				
-				
-				//displayorder=new PanelDisplayOrder(null);
-				
-				
-				DefaultTableModel model = (DefaultTableModel) displayorder.table.getModel();
-				//model.addRow(data);
-				
-				
-				//new String[] { "cccrdgf", "cccsdfdf", "cccdgd"}
-				//model.addRow();
-				System.out.println(model.getRowCount());
-				try {
-					display("Sfsdf");
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			
-				System.out.println(displayorder.getBounds());
-				
-				
-				
-			}
-		});
+		
 	
 		
-		btnNewButton.setBounds(214, 533, 117, 29);
-		frame.getContentPane().add(btnNewButton);
-		
-		//panel_1.add(displayorder);
-		
-		//menuClicked(displayorder);
-		//displayorder.setVisible(true);
-		
-		//displayorder.setBounds(0,0,331,494);
-		
-		//new PanelDisplayOrder();
-		
-	///	panelDisplay.add(displayorder);
-		//addrow("sample");
-		
-		//JPanel panelDisplay = new JPanel();
-		//panelDisplay.setBounds(6, 6, 328, 494);
-		
-		//frame.getContentPane().add(panelDisplay);
-		
-		//JPanel DisplayOrder = new JPanel();
-		//DisplayOrder.setBounds(6, 6, 328, 494);
-		//frame.getContentPane().add(DisplayOrder);
+	
 		
 		
 		
