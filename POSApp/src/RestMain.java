@@ -338,76 +338,100 @@ public class RestMain {
 		//table.setBounds(6, 6, 319, 482);
 		panel_1.add(displayorder);
 		
+		JButton btnRemove = new JButton("Remove from List");
+		btnRemove.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				DefaultTableModel model=(DefaultTableModel) displayorder.table.getModel();
+				
+				int[] selectedRows = displayorder.table.getSelectedRows();
+		        if (selectedRows.length > 0) {
+		            for (int i = selectedRows.length - 1; i >= 0; i--) {
+		                model.removeRow(selectedRows[i]);
+		            }
+		            
+		            double total=0;
+					
+					
+					for(int i=0;i<displayorder.table.getRowCount();i++) {
+						
+						total+=Double.parseDouble((String) displayorder.table.getValueAt(i, 1))*Double.valueOf((String)displayorder.table.getValueAt(i, 2));
+						
+						
+					}
+					
+					System.out.println(total);
+					PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
+		            
+		        }
+				
+			}
+		});
+		btnRemove.setBounds(739, 533, 290, 51);
+		frame.getContentPane().add(btnRemove);
+		
+		JButton btnNewButton_1 = new JButton("Proceed to Payment");
+		Payment payment=new Payment();
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				//payment = new Payment();
+				payment.setSize(682,494);
+				payment.setLocation(0,0);
+				panel.add(payment);
+				panelLunch.setVisible(false);
+				panelChicken.setVisible(false);
+				panelPork.setVisible(false);
+				panelFish.setVisible(false);
+				panelMainContent.setVisible(false);
+				
+				
+				//panel.remove(panelFish);
+				payment.setVisible(true);
+				
+				
+				
+				
+			}
+		});
+		btnNewButton_1.setBounds(296, 533, 442, 51);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Back to Menu");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				payment.setVisible(false);
+				
+				
+				panelLunch.setVisible(true);
+				panelChicken.setVisible(true);
+				panelPork.setVisible(true);
+				panelFish.setVisible(true);
+				panelMainContent.setVisible(true);
+				
+				
+			}
+		});
+		btnNewButton_2.setBounds(6, 533, 290, 51);
+		frame.getContentPane().add(btnNewButton_2);
+		
 		
 		
 		System.out.println(text);
 		
 		
 		
-		btnNewButton = new JButton("New button");
+		
 		
 		 
 		
 		
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				
-				//table = new JTable();
-				//table.setBounds(6, 6, 319, 482);
-				//panel_1.add(displayorder);
-				String []data= new String[] { "cccrdgf", "cccsdfdf", "cccdgd"};
-				
-				
-				
-				//displayorder=new PanelDisplayOrder(null);
-				
-				
-				DefaultTableModel model = (DefaultTableModel) displayorder.table.getModel();
-				//model.addRow(data);
-				
-				
-				//new String[] { "cccrdgf", "cccsdfdf", "cccdgd"}
-				//model.addRow();
-				System.out.println(model.getRowCount());
-				try {
-					display("Sfsdf");
-				} catch (ClassNotFoundException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-			
-				System.out.println(displayorder.getBounds());
-				
-				
-				
-			}
-		});
+		
 	
 		
-		btnNewButton.setBounds(214, 533, 117, 29);
-		frame.getContentPane().add(btnNewButton);
-		
-		//panel_1.add(displayorder);
-		
-		//menuClicked(displayorder);
-		//displayorder.setVisible(true);
-		
-		//displayorder.setBounds(0,0,331,494);
-		
-		//new PanelDisplayOrder();
-		
-	///	panelDisplay.add(displayorder);
-		//addrow("sample");
-		
-		//JPanel panelDisplay = new JPanel();
-		//panelDisplay.setBounds(6, 6, 328, 494);
-		
-		//frame.getContentPane().add(panelDisplay);
-		
-		//JPanel DisplayOrder = new JPanel();
-		//DisplayOrder.setBounds(6, 6, 328, 494);
-		//frame.getContentPane().add(DisplayOrder);
+	
 		
 		
 		
@@ -460,5 +484,4 @@ public void display(String label) throws ClassNotFoundException, SQLException {
 		
 		//initialize();
 	}
-	
 }

@@ -92,6 +92,20 @@ public class PanelFish extends JPanel {
 									
 									DefaultTableModel model = (DefaultTableModel) tab.getModel();
 									model.addRow(data);
+									
+									double total=0;
+									
+									
+									for(int i=0;i<tab.getRowCount();i++) {
+										
+										total+=Double.parseDouble((String) tab.getValueAt(i, 1))*Double.valueOf((String)tab.getValueAt(i, 2));
+										
+										
+									}
+									
+									System.out.println(total);
+									//PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
+									PanelDisplayOrder.priceDisplay.setText(String.format("%.2f",Double.parseDouble(String.valueOf(total))));
 						} catch (ClassNotFoundException | SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();
