@@ -57,7 +57,6 @@ public class PanelPork extends JPanel {
 			name1=db.MenuName("PORK").get(initialcount);
 			
 			
-			//System.out.println(name1);
 		
 			nameCollection.add(name1);
 	
@@ -104,8 +103,8 @@ public class PanelPork extends JPanel {
 									}
 									
 									System.out.println(total);
-									PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
-									
+								
+									PanelDisplayOrder.priceDisplay.setText(String.format("%.2f",Double.parseDouble(String.valueOf(total))));
 						} catch (ClassNotFoundException | SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

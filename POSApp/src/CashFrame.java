@@ -23,6 +23,7 @@ public class CashFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNumber;
+	JPanel okPanel;
 
 	/**
 	 * Launch the application.
@@ -74,11 +75,11 @@ public class CashFrame extends JFrame {
 		txtNumber.setColumns(10);
 		
 		
-		JPanel okPanel=new JPanel();
-		okPanel.setBackground(Color.green);
+		okPanel=new JPanel();
+		okPanel.setBackground(new Color(0,153,76));
 		okPanel.add(okLabel);
 		JPanel cancelPanel=new JPanel();
-		cancelPanel.setBackground(Color.red);
+		cancelPanel.setBackground(new Color(204,0,0));
 		cancelPanel.add(cancelLabel);
 		
 		
@@ -90,7 +91,7 @@ public class CashFrame extends JFrame {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-			menuClicked("Ok");
+			menuClicked("Ok",txtNumber.getText());
 				//JOptionPane.showInternalMessageDialog(this,"ok button");  
 			}
 			
@@ -100,7 +101,7 @@ public class CashFrame extends JFrame {
 		cancelPanel.addMouseListener(new PanelButtonMouseAdapter(cancelPanel){
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				menuClicked("cancel");
+				menuClicked("cancel",null);
 				
 			}
 			
@@ -216,44 +217,74 @@ private class PanelButtonMouseAdapter extends MouseAdapter{
 		}
 		@Override
 		public void mouseEntered(MouseEvent e) {
+			if(panel.equals(okPanel))
+			panel.setBackground(new Color(0,153,76));
+			else
 			
-			panel.setBackground(new Color(112,128,144));
-			
-			
+				panel.setBackground(new Color(204,0,0));
 		}
 		@Override
 		public void mouseExited(MouseEvent e) {
-			
-			panel.setBackground(new Color(47,79,79));
+			if(panel.equals(okPanel))
+			panel.setBackground(new Color(0,153,76));
+			else
+				
+				panel.setBackground(new Color(204,0,0));
 			
 		}
 		
 		@Override
 		public void mousePressed(MouseEvent e) {
-			panel.setBackground(new Color(60,179,113));
+			if(panel.equals(okPanel))
+			panel.setBackground(new Color(0,153,76));
+			else
+				
+				panel.setBackground(new Color(204,0,0));
 			//menuClicked(pChicken);
 		}
 		@Override
 		public void mouseReleased(MouseEvent e) {
-			
-			panel.setBackground(new Color(112,128,144));
+			if(panel.equals(okPanel))
+				
+			panel.setBackground(new Color(0,153,76));
+			else
+				
+				panel.setBackground(new Color(204,0,0));
 			
 		}
 		
 		
 	}
 
-public void menuClicked(String message) {
+public void menuClicked(String message,String amount) {
 	
 	 if(message.equals("Ok")) {
+		 
+		 double change;
+		 
+		// System.out.println(PanelDisplayOrder.priceDisplay.getText());
+		 
+		 
+		 change=(Double.parseDouble(amount))-(Double.parseDouble(PanelDisplayOrder.priceDisplay.getText()));
+		 JOptionPane.showMessageDialog(this, "Change: $"+String.format("%.2f",change));
 		 
 		 
 		 
 	 }
 	 else
+		
+		 
+		 if(txtNumber.getText().equals(""))
 		 this.setVisible(false);
-	
+		 
+		 else
+		 {
+			
+			 txtNumber.setText(txtNumber.getText().substring(0, txtNumber.getText().length()-1));
+	 
+		 }
 }
+
 	
 	
 	

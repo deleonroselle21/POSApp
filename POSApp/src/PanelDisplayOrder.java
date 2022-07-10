@@ -26,7 +26,7 @@ public class PanelDisplayOrder extends JPanel {
 	JLabel label;
 	
 	public String bagtext="";
-	//DefaultTableModel model;
+
 	
 	
 	public JPanel panel;
@@ -116,14 +116,7 @@ public class PanelDisplayOrder extends JPanel {
 	}
 	
 	
-	public void displayPrice() {
-		
-		//System.out.println(":FGhfgh");
-		// return (PropertyChangeListener) table.getValueAt(0, 1);
-		  
-		
-		
-	}
+	
 	
 	 ActionListener actionListenerComboBox = new ActionListener() {
 	      public void actionPerformed(ActionEvent actionEvent) {
@@ -141,8 +134,8 @@ public class PanelDisplayOrder extends JPanel {
 				}
 				
 				System.out.println(total);
-				PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
-				
+				//PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
+				PanelDisplayOrder.priceDisplay.setText(String.format("%.2f",Double.parseDouble(String.valueOf(total))));
 	    	  
 	      }
 	    };

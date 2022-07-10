@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Payment extends JPanel {
 
@@ -87,7 +88,16 @@ public class Payment extends JPanel {
 		         public void actionPerformed(ActionEvent e) {
 		        	   
 		        	 
+		        	 
+		        	 
+		        	 
+		        	 
+		        	 
 		        	CashFrame cash;
+		        	
+		        	
+		        	if(button.getText().equals("Cash")) {
+		        	
 					try {
 						cash = new CashFrame();
 					  	cash.setVisible(true);
@@ -96,7 +106,18 @@ public class Payment extends JPanel {
 						e1.printStackTrace();
 					}
 		      
-		        	 
+		        	}
+		        	
+		        	if (button.getText().equals("Credit Card")) {
+		        		JOptionPane.showMessageDialog(button, "Please swipe Card");
+		        		
+		        		
+		        	}
+		        	if (button.getText().equals("Debit Card")) {
+		        		JOptionPane.showMessageDialog(button, "Please swipe Card");
+		        		
+		        		
+		        	}
 		        	
 						
 		        	

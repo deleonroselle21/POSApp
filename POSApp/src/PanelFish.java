@@ -104,8 +104,8 @@ public class PanelFish extends JPanel {
 									}
 									
 									System.out.println(total);
-									PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
-									
+									//PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
+									PanelDisplayOrder.priceDisplay.setText(String.format("%.2f",Double.parseDouble(String.valueOf(total))));
 						} catch (ClassNotFoundException | SQLException e1) {
 							// TODO Auto-generated catch block
 							e1.printStackTrace();

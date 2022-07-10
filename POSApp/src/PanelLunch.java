@@ -27,12 +27,13 @@ public class PanelLunch extends JPanel {
 	
 	
 	 JPanel panel;
-	//RestMain rm=new RestMain("k");
+	
 	 DatabaseQuery db;
 	 JTable tab=PanelDisplayOrder.table;
 	 
 	RestMain rm;
-	//PanelDisplayOrder displayorder=new PanelDisplayOrder(null);
+
+	
 
 	/**
 	 * Create the panel.
@@ -44,16 +45,6 @@ public class PanelLunch extends JPanel {
 	 public PanelLunch() throws ClassNotFoundException, SQLException  {
 
 		 
-			//RestMain rm;
-		
-		// JTable table=dp.table;
-		// dp=new PanelDisplayOrder();
-		// table.setSize(331,494);
-		 
-	
-		//	table.setLocation(0,0);
-			
-		//rm=new RestMain("");
 			
 		 
 		 
@@ -64,9 +55,7 @@ public class PanelLunch extends JPanel {
 		setLayout(null);
 		panel.setBounds(0, 0, 652, 397);
 		add(panel);
-		//dp=new PanelDisplayOrder();
-	//	rm=new RestMain();
-		//displayorder=new PanelDisplayOrder(table,null);
+	
 	
 		DatabaseQuery db=new DatabaseQuery();
 		int count=db.ConnectionCount("LUNCH");
@@ -129,11 +118,7 @@ public class PanelLunch extends JPanel {
 						 String []data= new String[] { button.getText(),price, "1"};
 							
 							
-			        	 
-			        	 
-							
-							//System.out.println(tab.getBounds());
-							//System.out.println(tab.getRowCount());
+			        
 								
 								DefaultTableModel model = (DefaultTableModel) tab.getModel();
 								model.addRow(data);
@@ -150,7 +135,7 @@ public class PanelLunch extends JPanel {
 								}
 								
 								System.out.println(total);
-								PanelDisplayOrder.priceDisplay.setText(String.valueOf(total));
+								PanelDisplayOrder.priceDisplay.setText(String.format("%.2f",Double.parseDouble(String.valueOf(total))));
 								
 								
 								
@@ -175,11 +160,6 @@ public class PanelLunch extends JPanel {
 	}
 	 
 	 
-	 public JTable getTable() throws ClassNotFoundException, SQLException {
-		 
-		// JTable tab=dp.table;
-		 
-		 return tab;
-	 }
+	 
 	
 }
