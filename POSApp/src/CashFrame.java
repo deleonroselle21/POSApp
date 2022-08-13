@@ -24,7 +24,7 @@ public class CashFrame extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNumber;
 	JPanel okPanel;
-
+ ////additional comment from gdeleon
 	/**
 	 * Launch the application.
 	 */
